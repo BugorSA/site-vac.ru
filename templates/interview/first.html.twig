@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div id="results"> </div>
+<div>Оставить заявку</div>
+<label for="name">Ваше имя:</label><input id="name" name="name" value="" type="text"><br>
+<label for="email">Ваш E-mail:</label><input id="email" name="email" value="" type="text"><br>
+<label for="phone">Ваш телефон:</label><input id="phone" name="phone" value="" type="text"><br>
+<button id="send" class="btn btn-primary">Отправить</button>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $('#send').click(function() {
+        $.ajax({
+            type: 'GET',
+            url: '/second', //обращаемся к обработчику
+            data: {
+                name: $('#name').val(),
+                email: $('#email').val(),
+                phone: $('#phone').val()
+            },
+            success: function (data) {  //в случае успеха выводим результаты в div "results"
+                $('#formx').remove(); //скрываем форму после отправки
+                $('#results').html(data); //показываем сообщение об успехе вместо неё
+            },
+            error: function (xhr, str) { //ошибка выводит соответствующее сообщение
+                alert('Возникла ошибка: ' + xhr.responseCode);
+            }
+        })
+    });
+</script>
+</body>
+</html>
