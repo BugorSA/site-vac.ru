@@ -8,110 +8,132 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
 </head>
 <body>
-<div id="results"></div>
-<div>Оставить заявку</div>
-<div class="tab">
-    <label for="name">Ваше имя:</label><input id="name" name="name" value="" type="text"><br>
-    <label for="email">Ваш E-mail:</label><input id="email" name="email" value="" type="text"><br>
-    <label for="phone">Ваш телефон:</label><input id="phone" name="phone" value="" type="number"><br>
-    <label>
-        <select id="select">
-            <option disabled>Укажите вашу сферу бизнеса:</option>
-            <option selected="selected">Услуги</option>
-            <option id="select1">Торговля</option>
-            <option id="select2">Общественное питание</option>
-            <option id="select3">Производство</option>
-            <option id="select4">IT-сфера</option>
-            <option id="another">Другое</option>
-        </select>
-    </label><br>
-    <div id="hidden_place" style="display: none">
-        <label for="nameArea">Ваша область:</label><input id="nameArea" name="nameArea" type="text"><br>
-    </div>
-</div>
-<div class="tab">
-    <div>
-        <p><b>Какого месячного заработка вы планируете добиться с вашей франшизы</b></p>
-        <p><label>
-                <input name="price" type="radio" value="100 - 300 тыс. руб. в месяц">
-            </label> 100 - 300 тыс. руб. в месяц </p>
-        <p><label>
-                <input name="price" type="radio" value="300 - 500 тыс. руб. в месяц">
-            </label> 300 - 500 тыс. руб. в месяц </p>
-        <p><label>
-                <input name="price" type="radio" value="500 - 1000 тыс. руб. в месяц">
-            </label> 500 - 1000 тыс. руб. в месяц</p>
-        <p><label>
-                <input name="price" type="radio" value="более 1 миллиона руб. в месяц">
-            </label> более 1 миллиона руб. в месяц </p>
-    </div>
-    <div>
-        <p><b>Есть ли у вас проверенные поставщики/контрагенты на всей территории распространнения франшизы</b></p>
-        <p><label>
-                <input name="provider" type="radio" value="Да">
-            </label>Да</p>
-        <p><label>
-                <input name="provider" type="radio" value="Нет">
-            </label>Нет</p>
-    </div>
-    <div>
-        <p><b>Планируете ли вы проверять качество работы ваших фрайчази?</b></p>
-        <p><label>
-                <input name="fran" type="radio" value="Да">
-            </label>Да</p>
-        <p><label>
-                <input name="fran" type="radio" value="Нет">
-            </label>Нет</p>
-    </div>
-</div>
-<div class="tab">
-    <div>
-        <p>Расскажите о себе и своей фрашизе<Br>
-            <label>
-                <textarea id="comment" name="comment" cols="40" rows="6"></textarea>
-            </label></p>
-    </div>
-    <div>
-        <p>Как вы видете будущее своего бизнеса<Br>
-            <label>
-                <textarea id="comment2" name="comment2" cols="40" rows="3"></textarea>
-            </label></p>
+<div class="container">
+    <div id="results"></div>
+    <div class="tab">
+        <div class="body credential-container">
+            <div class="body-label">Оставить заявку</div>
+            <div class="formControl">
+                <label class="textHelper" for="name">Ваше имя: </label>
+                <input class="input-field" id="name" name="name" value="" placeholder="Michael" type="text">
+            </div>
+
+            <div class="formControl">
+                <label class="textHelper" for="email">Ваш E-mail:</label>
+                <input class="input-field" id="email" name="email" placeholder="example@test.com" value="" type="text">
+            </div>
+
+            <div class="formControl">
+                <label class="textHelper" for="phone">Ваш телефон:</label>
+                <input class="input-field" id="phone" name="phone" value="" placeholder="+79997773535" type="number">
+            </div>
+
+            <div class="formControl">
+                <label class="textHelper" for="phone">Сфера деятельности:</label>
+                <select class="input-field selector" id="select">
+                    <option disabled>Укажите вашу сферу бизнеса:</option>
+                    <option selected="selected">Услуги</option>
+                    <option id="select1">Торговля</option>
+                    <option id="select2">Общественное питание</option>
+                    <option id="select3">Производство</option>
+                    <option id="select4">IT-сфера</option>
+                    <option id="another">Другое</option>
+                </select>
+                <div id="hidden_place" class="hidden-box" style="display: none">
+                    <label class="textHelper" for="nameArea">Ваша сфера:</label>
+                    <input class="input-field" id="nameArea" name="nameArea" type="text">
+                </div>
+            </div>
+            <button class="btn btn-dark " type="button" id="nextBtnCredentials" onclick="nextPrev(1)">Далее</button>
+        </div>
     </div>
 
+    <div class="tab">
+        <div class="body">
+            <div>
+                <p><b>Какого месячного заработка вы планируете добиться с вашей франшизы</b></p>
+                <p><label>
+                        <input name="price" type="radio" value="100 - 300 тыс. руб. в месяц">
+                    </label> 100 - 300 тыс. руб. в месяц </p>
+                <p><label>
+                        <input name="price" type="radio" value="300 - 500 тыс. руб. в месяц">
+                    </label> 300 - 500 тыс. руб. в месяц </p>
+                <p><label>
+                        <input name="price" type="radio" value="500 - 1000 тыс. руб. в месяц">
+                    </label> 500 - 1000 тыс. руб. в месяц</p>
+                <p><label>
+                        <input name="price" type="radio" value="более 1 миллиона руб. в месяц">
+                    </label> более 1 миллиона руб. в месяц </p>
+            </div>
+            <div>
+                <p><b>Есть ли у вас проверенные поставщики/контрагенты на всей территории распространнения франшизы</b>
+                </p>
+                <p><label>
+                        <input name="provider" type="radio" value="Да">
+                    </label>Да</p>
+                <p><label>
+                        <input name="provider" type="radio" value="Нет">
+                    </label>Нет</p>
+            </div>
+            <div>
+                <p><b>Планируете ли вы проверять качество работы ваших фрайчази?</b></p>
+                <p><label>
+                        <input name="fran" type="radio" value="Да">
+                    </label>Да</p>
+                <p><label>
+                        <input name="fran" type="radio" value="Нет">
+                    </label>Нет</p>
+            </div>
+            <button class="btn btn-dark" type="button" id="prevBtn2" onclick="nextPrev(-1)">Назад</button>
+            <button class="btn btn-dark" type="button" id="nextBtn2" onclick="nextPrev(1)">Далее</button>
+        </div>
+    </div>
+    <div class="tab">
+        <div>
+            <p>Расскажите о себе и своей фрашизе<Br>
+                <label>
+                    <textarea id="comment" name="comment" cols="40" rows="6"></textarea>
+                </label></p>
+        </div>
+        <div>
+            <p>Как вы видете будущее своего бизнеса<Br>
+                <label>
+                    <textarea id="comment2" name="comment2" cols="40" rows="3"></textarea>
+                </label></p>
+        </div>
+        <button class="btn btn-dark" type="button" id="prevBtn3" onclick="nextPrev(-1)">Назад</button>
+        <button class="btn btn-dark" type="button" id="nextBtn3" onclick="nextPrev(1)">Далее</button>
+    </div>
 
-</div>
-<div style="float:right;">
-    <button class="btn btn-dark" type="button" id="prevBtn" onclick="nextPrev(-1)">Назад</button>
-    <button class="btn btn-dark" type="button" id="nextBtn" onclick="nextPrev(1)">Далее</button>
-</div>
-<div id="send_div" class="tab">
+    <div id="send_div" class="tab">
+        <div>
+            <p><label>
+                    <input type="checkbox" id="agree" name="agree" value="agree">
+                </label>Я, согласен на обработку данных<Br>
+        </div>
+        <div id="submit_button" style="display: none">
+            <button disabled="disabled" id="send">Отправить</button>
+        </div>
+    </div>
+    <div id="result" style="display: none">
+        Отлично вы успешно отправили данные, ждите пока с вами свяжуться <br> <a href="{{ path('index') }}"> Пройти
+            заново</a>
+    </div>
     <div>
-        <p><label>
-                <input type="checkbox" id="agree" name="agree" value="agree">
-            </label>Я, согласен на обработку данных<Br>
-    </div>
-    <div id="submit_button" style="display: none">
-        <button disabled="disabled" id="send">Отправить</button>
-    </div>
-</div>
-<div id="result" style="display: none">
-    Отлично вы успешно отправили данные, ждите пока с вами свяжуться <br> <a href="{{ path('index') }}"> Пройти заново</a>
-</div>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $('select').on('change', function () {
-        if (this.value === 'Другое') {
-            $('#hidden_place').show(1);
-        } else $('#hidden_place').hide(1);
-    });
-    $('#agree').on('change', function () {
-        button = document.getElementById('send')
-        button.disabled = !this.checked;
-    });
-</script>
-<script src="{{ asset('js/multiForm.js') }}"></script>
-<script src="{{ asset('js/ajaxScript.js') }}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $('select').on('change', function () {
+                if (this.value === 'Другое') {
+                    $('#hidden_place').show(1);
+                } else $('#hidden_place').hide(1);
+            });
+            $('#agree').on('change', function () {
+                button = document.getElementById('send')
+                button.disabled = !this.checked;
+            });
+        </script>
+        <script src="{{ asset('js/multiForm.js') }}"></script>
+        <script src="{{ asset('js/ajaxScript.js') }}"></script>
 </body>
 </html>

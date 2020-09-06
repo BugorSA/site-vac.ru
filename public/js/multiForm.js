@@ -4,7 +4,7 @@ showTab(currentTab);
 
 function showTab(n) {
     var x = document.getElementsByClassName("tab");
-    x[n].style.display = "block";
+    x[n].style.display = "flex";
     if (n === 0) {
         $('#prevBtn').hide(1);
     } else {
@@ -75,15 +75,15 @@ function validate(currentTab) {
             let y = [];
             if (!validateRadio(price)){
                 y.push(1)
-                price.className= "invalid"
+                price.className= "invalidradio"
             }
             if (!validateRadio(provider)){
                 y.push(2)
-                provider.className= "invalid"
+                provider.className= "invalidradio"
             }
             if (!validateRadio(fran)){
                 y.push(3)
-                fran.className= "invalid"
+                fran.className= "invalidradio"
             }
             console.log(y)
             return (y.length === 0)
