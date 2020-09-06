@@ -13,7 +13,7 @@
 <div class="tab">
     <label for="name">Ваше имя:</label><input id="name" name="name" value="" type="text"><br>
     <label for="email">Ваш E-mail:</label><input id="email" name="email" value="" type="text"><br>
-    <label for="phone">Ваш телефон:</label><input id="phone" name="phone" value="" type="text"><br>
+    <label for="phone">Ваш телефон:</label><input id="phone" name="phone" value="" type="number"><br>
     <label>
         <select id="select">
             <option disabled>Укажите вашу сферу бизнеса:</option>
@@ -57,10 +57,10 @@
     <div>
         <p><b>Планируете ли вы проверять качество работы ваших фрайчази?</b></p>
         <p><label>
-                <input name="provider" type="radio">
+                <input name="fran" type="radio">
             </label>Да</p>
         <p><label>
-                <input name="provider" type="radio">
+                <input name="fran" type="radio">
             </label>Нет</p>
     </div>
 </div>
@@ -74,15 +74,26 @@
     <div>
         <p>Как вы видете будущее своего бизнеса<Br>
             <label>
-                <textarea name="comment" cols="40" rows="3"></textarea>
+                <textarea name="comment2" cols="40" rows="3"></textarea>
             </label></p>
     </div>
+
+
 </div>
 <div style="float:right;">
-    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    <button class="btn btn-dark" type="button" id="prevBtn" onclick="nextPrev(-1)">Назад</button>
+    <button class="btn btn-dark" type="button" id="nextBtn" onclick="nextPrev(1)">Далее</button>
 </div>
-<button id="send" class="btn btn-primary">Отправить</button>
+<div class="tab">
+    <div>
+        <p><label>
+                <input type="checkbox" id="agree" name="agree" value="agree">
+            </label>Я, согласен на обработку данных<Br>
+    </div>
+    <div id="submit_button" style="display: none">
+        <button disabled="disabled" id="send">Отправить</button>
+    </div>
+</div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -91,6 +102,10 @@
         if (this.value === 'Другое') {
             $('#hidden_place').show(1);
         } else $('#hidden_place').hide(1);
+    });
+    $('#agree').on('change', function () {
+        button = document.getElementById('send')
+        button.disabled = !this.checked;
     });
 </script>
 <script src="{{ asset('js/multiForm.js') }}"></script>
