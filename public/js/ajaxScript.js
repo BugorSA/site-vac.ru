@@ -22,6 +22,7 @@ $('#send').click(function () {
         success: function () {  //в случае успеха выводим результаты в div "results"
             $('#send_div').hide(); //скрываем форму после отправки
             $('#result').show();
+            $('#prevBtn').hide();
         },
         error: function (xhr, str) { //ошибка выводит соответствующее сообщение
             alert('Возникла ошибка: ' + xhr.responseCode);
