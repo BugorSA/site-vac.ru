@@ -1,9 +1,9 @@
 $('#send').click(function () {
-    var price = document.getElementsByName("price");
-    var provider = document.getElementsByName("provider")
-    var fran = document.getElementsByName("fran")
-    var comment = document.getElementsByName("comment");
-    var comment2 = document.getElementsByName("comment2");
+    var price = checkedValue1();
+    var provider = checkedValue2();
+    var fran = checkedValue3();
+    var comment = document.getElementById("comment").value;
+    var comment2 = document.getElementById("comment2").value;
     $.ajax({
         type: 'POST',
         url: '/second', //обращаемся к обработчику
@@ -19,12 +19,35 @@ $('#send').click(function () {
             comment: comment,
             comment2: comment2,
         },
-        success: function (data) {  //в случае успеха выводим результаты в div "results"
-            $('#formx').remove(); //скрываем форму после отправки
-            $('#results').html(data); //показываем сообщение об успехе вместо неё
+        success: function () {  //в случае успеха выводим результаты в div "results"
+            $('#send_div').hide(); //скрываем форму после отправки
+            $('#result').show();
         },
         error: function (xhr, str) { //ошибка выводит соответствующее сообщение
             alert('Возникла ошибка: ' + xhr.responseCode);
+            alert(str);
         }
     })
 });
+
+function checkedValue1() {
+    var ch = document.getElementsByName('price');
+    for (i = 0; i < ch.length; i++) {
+        if (ch[i].checked)
+            return ch[i].value;
+    }
+}
+function checkedValue2() {
+    var ch = document.getElementsByName('provider');
+    for (i = 0; i < ch.length; i++) {
+        if (ch[i].checked)
+            return ch[i].value;
+    }
+}
+function checkedValue3() {
+    var ch = document.getElementsByName('fran');
+    for (i = 0; i < ch.length; i++) {
+        if (ch[i].checked)
+            return ch[i].value;
+    }
+}

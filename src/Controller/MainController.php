@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Entity\Resume;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,6 +34,12 @@ class MainController extends AbstractController
         $phone = $request->get("phone");
         $area = $request->get("area");
         $areaAn = $request->get("areaAn");
+        $expected_profit = $request->get("price");
+        $provider = $request->get("provider");
+        $fran_checks = $request->get("fran");
+        $about_me = $request->get("comment");
+        $about_future = $request->get("comment2");
+        $date = new DateTime();
         if ($areaAn !== "") {
             $area = $areaAn;
         }
@@ -41,7 +48,14 @@ class MainController extends AbstractController
         $resume->setEmail($mail);
         $resume->setTelephone($phone);
         $resume->setArea($area);
+        $resume->setExpectedProfit($expected_profit);
+        $resume->setProvider($provider);
+        $resume->setFranChecks(($fran_checks === "Да"));
+        $resume->setAboutMe($about_me);
+        $resume->setAboutFuture($about_future);
+        $resume->setDepartureDate($date);
         $answer = $this->addResume($resume, $validator);
+        echo $answer;
         return new Response("$answer");
     }
 

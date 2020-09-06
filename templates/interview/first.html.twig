@@ -33,34 +33,34 @@
     <div>
         <p><b>Какого месячного заработка вы планируете добиться с вашей франшизы</b></p>
         <p><label>
-                <input name="price" type="radio">
+                <input name="price" type="radio" value="100 - 300 тыс. руб. в месяц">
             </label> 100 - 300 тыс. руб. в месяц </p>
         <p><label>
-                <input name="price" type="radio">
+                <input name="price" type="radio" value="300 - 500 тыс. руб. в месяц">
             </label> 300 - 500 тыс. руб. в месяц </p>
         <p><label>
-                <input name="price" type="radio">
+                <input name="price" type="radio" value="500 - 1000 тыс. руб. в месяц">
             </label> 500 - 1000 тыс. руб. в месяц</p>
         <p><label>
-                <input name="price" type="radio">
+                <input name="price" type="radio" value="более 1 миллиона руб. в месяц">
             </label> более 1 миллиона руб. в месяц </p>
     </div>
     <div>
         <p><b>Есть ли у вас проверенные поставщики/контрагенты на всей территории распространнения франшизы</b></p>
         <p><label>
-                <input name="provider" type="radio">
+                <input name="provider" type="radio" value="Да">
             </label>Да</p>
         <p><label>
-                <input name="provider" type="radio">
+                <input name="provider" type="radio" value="Нет">
             </label>Нет</p>
     </div>
     <div>
         <p><b>Планируете ли вы проверять качество работы ваших фрайчази?</b></p>
         <p><label>
-                <input name="fran" type="radio">
+                <input name="fran" type="radio" value="Да">
             </label>Да</p>
         <p><label>
-                <input name="fran" type="radio">
+                <input name="fran" type="radio" value="Нет">
             </label>Нет</p>
     </div>
 </div>
@@ -68,13 +68,13 @@
     <div>
         <p>Расскажите о себе и своей фрашизе<Br>
             <label>
-                <textarea name="comment" cols="40" rows="6"></textarea>
+                <textarea id="comment" name="comment" cols="40" rows="6"></textarea>
             </label></p>
     </div>
     <div>
         <p>Как вы видете будущее своего бизнеса<Br>
             <label>
-                <textarea name="comment2" cols="40" rows="3"></textarea>
+                <textarea id="comment2" name="comment2" cols="40" rows="3"></textarea>
             </label></p>
     </div>
 
@@ -84,7 +84,7 @@
     <button class="btn btn-dark" type="button" id="prevBtn" onclick="nextPrev(-1)">Назад</button>
     <button class="btn btn-dark" type="button" id="nextBtn" onclick="nextPrev(1)">Далее</button>
 </div>
-<div class="tab">
+<div id="send_div" class="tab">
     <div>
         <p><label>
                 <input type="checkbox" id="agree" name="agree" value="agree">
@@ -93,6 +93,9 @@
     <div id="submit_button" style="display: none">
         <button disabled="disabled" id="send">Отправить</button>
     </div>
+</div>
+<div id="result" style="display: none">
+    Отлично вы успешно отправили данные, ждите пока с вами свяжуться <br> <a href="{{ path('index') }}"> Пройти заново</a>
 </div>
 
 
