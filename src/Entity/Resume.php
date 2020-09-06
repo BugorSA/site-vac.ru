@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ResumeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ResumeRepository::class)
@@ -19,18 +20,27 @@ class Resume
 
     /**
      * @ORM\Column(type="string", length=250)
+     * @Assert\NotBlank()
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank()
      */
     private $telephone;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $area;
 
     public function getId(): ?int
     {
@@ -69,6 +79,18 @@ class Resume
     public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getArea(): ?string
+    {
+        return $this->area;
+    }
+
+    public function setArea(string $area): self
+    {
+        $this->area = $area;
 
         return $this;
     }

@@ -3,37 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
 </head>
 <body>
-<div id="results"> </div>
+<div id="results"></div>
 <div>Оставить заявку</div>
-<label for="name">Ваше имя:</label><input id="name" name="name" value="" type="text"><br>
-<label for="email">Ваш E-mail:</label><input id="email" name="email" value="" type="text"><br>
-<label for="phone">Ваш телефон:</label><input id="phone" name="phone" value="" type="text"><br>
+<div class="tab">
+    <label for="name">Ваше имя:</label><input id="name" name="name" value="" type="text"><br>
+    <label for="email">Ваш E-mail:</label><input id="email" name="email" value="" type="text"><br>
+    <label for="phone">Ваш телефон:</label><input id="phone" name="phone" value="" type="text"><br>
+    <label>
+        <select id="select">
+            <option disabled>Укажите вашу сферу бизнеса:</option>
+            <option selected="selected">Услуги</option>
+            <option id="select1">Торговля</option>
+            <option id="select2">Общественное питание</option>
+            <option id="select3">Производство</option>
+            <option id="select4">IT-сфера</option>
+            <option id="another">Другое</option>
+        </select>
+    </label><br>
+    <div id="hidden_place" style="display: none">
+        <label for="nameArea">Ваша область:</label><input id="nameArea" name="nameArea" type="text"><br>
+    </div>
+</div>
+<div class="tab">
+    <div>
+        <p><b>Какого месячного заработка вы планируете добиться с вашей франшизы</b></p>
+        <p><label>
+                <input name="price" type="radio">
+            </label> 100 - 300 тыс. руб. в месяц </p>
+        <p><label>
+                <input name="price" type="radio">
+            </label> 300 - 500 тыс. руб. в месяц </p>
+        <p><label>
+                <input name="price" type="radio">
+            </label> 500 - 1000 тыс. руб. в месяц</p>
+        <p><label>
+                <input name="price" type="radio">
+            </label> более 1 миллиона руб. в месяц </p>
+    </div>
+    <div>
+        <p><b>Есть ли у вас проверенные поставщики/контрагенты на всей территории распространнения франшизы</b></p>
+        <p><label>
+                <input name="provider" type="radio">
+            </label>Да</p>
+        <p><label>
+                <input name="provider" type="radio">
+            </label>Нет</p>
+    </div>
+    <div>
+        <p><b>Планируете ли вы проверять качество работы ваших фрайчази?</b></p>
+        <p><label>
+                <input name="provider" type="radio">
+            </label>Да</p>
+        <p><label>
+                <input name="provider" type="radio">
+            </label>Нет</p>
+    </div>
+</div>
+<div class="tab">
+    <div>
+        <p>Расскажите о себе и своей фрашизе<Br>
+            <label>
+                <textarea name="comment" cols="40" rows="6"></textarea>
+            </label></p>
+    </div>
+    <div>
+        <p>Как вы видете будущее своего бизнеса<Br>
+            <label>
+                <textarea name="comment" cols="40" rows="3"></textarea>
+            </label></p>
+    </div>
+</div>
+<div style="float:right;">
+    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+</div>
 <button id="send" class="btn btn-primary">Отправить</button>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
-    $('#send').click(function() {
-        $.ajax({
-            type: 'GET',
-            url: '/second', //обращаемся к обработчику
-            data: {
-                name: $('#name').val(),
-                email: $('#email').val(),
-                phone: $('#phone').val()
-            },
-            success: function (data) {  //в случае успеха выводим результаты в div "results"
-                $('#formx').remove(); //скрываем форму после отправки
-                $('#results').html(data); //показываем сообщение об успехе вместо неё
-            },
-            error: function (xhr, str) { //ошибка выводит соответствующее сообщение
-                alert('Возникла ошибка: ' + xhr.responseCode);
-            }
-        })
+    $('select').on('change', function () {
+        if (this.value === 'Другое') {
+            $('#hidden_place').show(1);
+        } else $('#hidden_place').hide(1);
     });
 </script>
+<script src="{{ asset('js/multiForm.js') }}"></script>
+<script src="{{ asset('js/ajaxScript.js') }}"></script>
 </body>
 </html>
