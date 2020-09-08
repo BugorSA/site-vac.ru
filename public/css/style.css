@@ -82,3 +82,20 @@ input:focus.invalid {
     min-width: 250px;
     margin: 0.5em;
 }
+
+.inlineRadio{
+    display: inline-flex;
+
+}
+.selector-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 250px;
+}
+.selector-item{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+}

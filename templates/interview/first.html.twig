@@ -50,70 +50,85 @@
 
     <div class="tab">
         <div class="body">
-            <div>
+            <div class="formControl">
                 <p><b>Какого месячного заработка вы планируете добиться с вашей франшизы</b></p>
-                <p><label>
-                        <input name="price" type="radio" value="100 - 300 тыс. руб. в месяц">
-                    </label> 100 - 300 тыс. руб. в месяц </p>
-                <p><label>
-                        <input name="price" type="radio" value="300 - 500 тыс. руб. в месяц">
-                    </label> 300 - 500 тыс. руб. в месяц </p>
-                <p><label>
-                        <input name="price" type="radio" value="500 - 1000 тыс. руб. в месяц">
-                    </label> 500 - 1000 тыс. руб. в месяц</p>
-                <p><label>
-                        <input name="price" type="radio" value="более 1 миллиона руб. в месяц">
-                    </label> более 1 миллиона руб. в месяц </p>
+                <div class="selector-body">
+                <label class="selector-item">
+                    <input name="price" type="radio" value="100 - 300 тыс. руб. в месяц">100 - 300 тыс. руб. в месяц
+                </label>
+                <label class="selector-item">
+                    <input name="price" type="radio" value="300 - 500 тыс. руб. в месяц">300 - 500 тыс. руб. в месяц
+                </label>
+
+
+                <label class="selector-item">
+                    <input name="price" type="radio" value="500 - 1000 тыс. руб. в месяц"> 500 - 1000 тыс. руб. в месяц
+                </label>
+                <label class="selector-item">
+                    <input name="price" type="radio" value="более 1 миллиона руб. в месяц">более 1 миллиона руб. в месяц
+                </label>
+                </div>
+
+
             </div>
-            <div>
-                <p><b>Есть ли у вас проверенные поставщики/контрагенты на всей территории распространнения франшизы</b>
-                </p>
-                <p><label>
+            <div class="formControl">
+                <p><b>Есть ли у вас проверенные поставщики/контрагенты</b>
+                <p><b>на всей территории распространнения франшизы</b></p>
+                <div><label>
                         <input name="provider" type="radio" value="Да">
-                    </label>Да</p>
-                <p><label>
+                    </label>Да
+                    <label>
                         <input name="provider" type="radio" value="Нет">
-                    </label>Нет</p>
+                    </label>Нет
+                </div>
+
             </div>
-            <div>
-                <p><b>Планируете ли вы проверять качество работы ваших фрайчази?</b></p>
-                <p><label>
+            <div class="formControl">
+                <b>Планируете ли вы проверять качество работы ваших фрайчази?</b>
+                <div>
+                    <label>
                         <input name="fran" type="radio" value="Да">
-                    </label>Да</p>
-                <p><label>
+                    </label>Да
+                    <label>
                         <input name="fran" type="radio" value="Нет">
-                    </label>Нет</p>
+                    </label>Нет
+                </div>
             </div>
             <button class="btn btn-dark" type="button" id="prevBtn2" onclick="nextPrev(-1)">Назад</button>
             <button class="btn btn-dark" type="button" id="nextBtn2" onclick="nextPrev(1)">Далее</button>
         </div>
     </div>
     <div class="tab">
-        <div>
-            <p>Расскажите о себе и своей фрашизе<Br>
-                <label>
-                    <textarea id="comment" name="comment" cols="40" rows="6"></textarea>
-                </label></p>
+        <div class="body">
+            <div class="formControl">
+                <p>Расскажите о себе и своей фрашизе<Br>
+                    <label>
+                        <textarea id="comment" name="comment" cols="40" rows="6"></textarea>
+                    </label></p>
+            </div>
+            <div class="formControl">
+                <p>Как вы видете будущее своего бизнеса<Br>
+                    <label>
+                        <textarea id="comment2" name="comment2" cols="40" rows="3"></textarea>
+                    </label></p>
+            </div>
+            <button class="btn btn-dark" type="button" id="prevBtn3" onclick="nextPrev(-1)">Назад</button>
+            <button class="btn btn-dark" type="button" id="nextBtn3" onclick="nextPrev(1)">Далее</button>
         </div>
-        <div>
-            <p>Как вы видете будущее своего бизнеса<Br>
-                <label>
-                    <textarea id="comment2" name="comment2" cols="40" rows="3"></textarea>
-                </label></p>
-        </div>
-        <button class="btn btn-dark" type="button" id="prevBtn3" onclick="nextPrev(-1)">Назад</button>
-        <button class="btn btn-dark" type="button" id="nextBtn3" onclick="nextPrev(1)">Далее</button>
     </div>
 
     <div id="send_div" class="tab">
-        <div>
-            <p><label>
-                    <input type="checkbox" id="agree" name="agree" value="agree">
-                </label>Я, согласен на обработку данных<Br>
+        <div class="border-info">
+            <div>
+                <p><label>
+                        <input type="checkbox" id="agree" name="agree" value="agree">
+                    </label>Я, согласен на обработку данных<Br>
+            </div>
+            <div id="submit_button" style="display: none">
+                <button class="btn btn-dark" disabled="disabled" id="send">Отправить</button>
+            </div>
         </div>
-        <div id="submit_button" style="display: none">
-            <button disabled="disabled" id="send">Отправить</button>
-        </div>
+
     </div>
     <div id="result" style="display: none">
         Отлично вы успешно отправили данные, ждите пока с вами свяжуться <br> <a href="{{ path('index') }}"> Пройти

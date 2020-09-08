@@ -25,8 +25,8 @@ $('#send').click(function () {
             $('#prevBtn').hide();
         },
         error: function (xhr, str) { //ошибка выводит соответствующее сообщение
-            alert('Возникла ошибка: ' + xhr.responseCode);
-            alert(str);
+            alert('Возникла ошибка: ' + xhr.responseCode); //+ "\n" + str
+            alert(str.toString()+ " " + str.message+ " " + str.name+ " ");
         }
     })
 });
