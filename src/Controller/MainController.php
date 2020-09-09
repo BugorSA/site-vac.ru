@@ -7,7 +7,6 @@ namespace App\Controller;
 use App\Entity\Resume;
 use App\Exception\MyException;
 use DateTime;
-use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
