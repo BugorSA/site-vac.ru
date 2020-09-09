@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\ResumeRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -72,6 +73,33 @@ class Resume
      * @ORM\Column(type="datetime")
      */
     private $departure_date;
+
+    /**
+     * Resume constructor.
+     * @param $name
+     * @param $email
+     * @param $telephone
+     * @param $area
+     * @param $expected_profit
+     * @param $provider
+     * @param $fran_checks
+     * @param $about_me
+     * @param $about_future
+     * @param $departure_date
+     */
+    public function __construct($name, $email, $telephone, $area, $expected_profit, $provider, $fran_checks, $about_me, $about_future, $departure_date)
+    {
+        $this->name = $name;
+        $this->email = $email;
+        $this->telephone = $telephone;
+        $this->area = $area;
+        $this->expected_profit = $expected_profit;
+        $this->provider = $provider;
+        $this->fran_checks = $fran_checks;
+        $this->about_me = $about_me;
+        $this->about_future = $about_future;
+        $this->departure_date = $departure_date;
+    }
 
     public function getId(): ?int
     {
@@ -186,12 +214,12 @@ class Resume
         return $this;
     }
 
-    public function getDepartureDate(): ?\DateTimeInterface
+    public function getDepartureDate(): ?DateTimeInterface
     {
         return $this->departure_date;
     }
 
-    public function setDepartureDate(\DateTimeInterface $departure_date): self
+    public function setDepartureDate(DateTimeInterface $departure_date): self
     {
         $this->departure_date = $departure_date;
 

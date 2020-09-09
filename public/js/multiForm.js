@@ -29,11 +29,6 @@ function nextPrev(n) {
 }
 
 function validate(currentTab) {
-    // var name = $('#name').val().toString();
-    // var email = $('#email').val().toString();
-    // var phone = $('#phone').val().toString();
-    // var select = $('#select').val().toString();
-    // var nameArea = $('#nameArea').val().toString();
     var name = document.getElementById("name");
     var email = document.getElementById("email");
     var phone = document.getElementById("phone");
@@ -44,7 +39,6 @@ function validate(currentTab) {
     var fran = document.getElementsByName("fran")
     var comment = document.getElementsByName("comment");
     var comment2 = document.getElementsByName("comment2");
-    // var agree = document.getElementById("agree");
     switch (currentTab) {
         case 0:
             let i = [];
@@ -97,10 +91,6 @@ function validate(currentTab) {
                 u.push(2)
                 comment2.className= "invalid"
             }
-            // if (!agree.checked){
-            //     u.push(3)
-            //     agree.className= "invalid"
-            // }
             console.log(u)
             return (u.length === 0)
         default:
@@ -135,8 +125,3 @@ function validateRadio(radios) {
     }
     return formValid;
 }
-
-// function InvMess(field){
-//     field.setCustomValidity('Неверный ввод данных');
-//     field.reportValidity();
-// }

@@ -2,5 +2,5 @@ index:
     path: /
     controller: App\Controller\MainController::index
 second:
-    path: /second
-    controller: App\Controller\MainController::second
+    path: /send
+    controller: App\Controller\MainController::ajaxRequestHandler

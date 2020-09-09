@@ -7,7 +7,6 @@ namespace App\Controller;
 use App\Entity\Resume;
 use App\Exception\MyException;
 use DateTime;
-use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,6 +20,8 @@ class MainController extends AbstractController
 
     /**
      * @Route("/", name="index")
+     * @param Request $request
+     * @return Response
      */
     public function index(Request $request)
     {
@@ -33,9 +34,48 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/second", name="second")
+     * @Route("/send", name="ajaxRequestHandler")
+     * @param Request $request
+     * @param ValidatorInterface $validator
+     * @return Response
+     * @throws MyException
      */
-    public function second(Request $request, ValidatorInterface $validator): Response
+    public function ajaxRequestHandler(Request $request, ValidatorInterface $validator): Response
+    {
+        $resume =$this->getResumeFromRequest($request);
+        $this->addResume($resume, $validator);
+        return new Response("OK",200);
+    }
+
+    /**
+     * @param Resume $resume
+     * @param ValidatorInterface $validator
+     * @throws MyException
+     */
+    private function addResume(Resume $resume, ValidatorInterface $validator)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $errors = $validator->validate($resume);
+        if (count($errors) === 0) {
+            $entityManager->persist($resume);
+            $entityManager->flush();
+        }
+        else{
+            throw new MyException((string)$errors, 400);
+        }
+    }
+
+    private function getJsonList(Serializer $serializer){
+        $array_resume = $this->getResumeList();//
+        return $serializer->serialize($array_resume, 'json');
+    }
+
+    private function getResumeList(): array
+    {
+        return $this->getDoctrine()->getRepository(Resume::class)->findAll();
+    }
+
+    private function getResumeFromRequest(Request $request): Resume
     {
         $name = $request->get("name");
         $mail = $request->get("email");
@@ -51,41 +91,6 @@ class MainController extends AbstractController
         if ($areaAn !== "") {
             $area = $areaAn;
         }
-        $resume = new Resume;
-        $resume->setName($name);
-        $resume->setEmail("wdafsdgf");
-        $resume->setTelephone($phone);
-        $resume->setArea($area);
-        $resume->setExpectedProfit($expected_profit);
-        $resume->setProvider($provider);
-        $resume->setFranChecks(($fran_checks === "Да"));
-        $resume->setAboutMe($about_me);
-        $resume->setAboutFuture($about_future);
-        $resume->setDepartureDate($date);
-        $answer = $this->addResume($resume, $validator);
-        return new Response("$answer");
-    }
-
-    public function addResume(Resume $resume, ValidatorInterface $validator)
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $errors = $validator->validate($resume);
-        if (count($errors) === 0) {
-            $entityManager->persist($resume);
-            $entityManager->flush();
-        }
-        else{
-            throw new MyException((string)$errors, 400);
-        }
-    }
-
-    public function getJsonList(Serializer $serializer){
-        $array_resume = $this->getResumeList();//
-        return $serializer->serialize($array_resume, 'json');
-    }
-
-    public function getResumeList(): array
-    {
-        return $this->getDoctrine()->getRepository(Resume::class)->findAll();
+        return new Resume($name,$mail,$phone,$area,$expected_profit,$provider,($fran_checks === "Да"),$about_me,$about_future,$date);
     }
 }

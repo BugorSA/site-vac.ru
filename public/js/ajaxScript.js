@@ -6,7 +6,7 @@ $('#send').click(function () {
     var comment2 = document.getElementById("comment2").value;
     $.ajax({
         type: 'POST',
-        url: '/second', //обращаемся к обработчику
+        url: '/send',
         data: {
             name: $('#name').val(),
             email: $('#email').val(),
@@ -19,12 +19,12 @@ $('#send').click(function () {
             comment: comment,
             comment2: comment2,
         },
-        success: function () {  //в случае успеха выводим результаты в div "results"
-            $('#send_div').hide(); //скрываем форму после отправки
+        success: function () {
+            $('#send_div').hide();
             $('#result').show();
             $('#prevBtn').hide();
         },
-        error: function (response) { //ошибка выводит соответствующее сообщение
+        error: function (response) {
             console.log(response)
             alert('Ошибка:' + response.responseText)
             $('#send_div').hide();
