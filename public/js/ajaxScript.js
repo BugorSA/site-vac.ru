@@ -24,9 +24,12 @@ $('#send').click(function () {
             $('#result').show();
             $('#prevBtn').hide();
         },
-        error: function (xhr, str) { //ошибка выводит соответствующее сообщение
-            alert('Возникла ошибка: ' + xhr.responseCode); //+ "\n" + str
-            alert(str.toString()+ " " + str.message+ " " + str.name+ " ");
+        error: function (response) { //ошибка выводит соответствующее сообщение
+            console.log(response)
+            alert('Ошибка:' + response.responseText)
+            $('#send_div').hide();
+            $('#prevBtn').hide();
+            $('#error').show();
         }
     })
 });

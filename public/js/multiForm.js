@@ -135,3 +135,8 @@ function validateRadio(radios) {
     }
     return formValid;
 }
+
+// function InvMess(field){
+//     field.setCustomValidity('Неверный ввод данных');
+//     field.reportValidity();
+// }

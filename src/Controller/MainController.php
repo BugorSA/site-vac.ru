@@ -1,23 +1,18 @@
 <?php
-
+declare(strict_types=1);
 
 namespace App\Controller;
 
 
 use App\Entity\Resume;
+use App\Exception\MyException;
 use DateTime;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Validator\Exception\ValidatorException;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class MainController extends AbstractController
@@ -30,11 +25,7 @@ class MainController extends AbstractController
     public function index(Request $request)
     {
         if ($request->get("auth_key") === 'junior_test'){ //$request->get("auth_key") $_GET["auth_key"]
-            //$encoders = [new JsonEncoder()];
-            //$normalizers = [new ObjectNormalizer()];
-            //$serializer = new Serializer($normalizers, $encoders);
             $serializer = $this->container->get('serializer');
-            //$reports = $serializer->serialize($doctrineobject, 'json');
             echo $this->getJsonList($serializer);
             return new Response();
         }
@@ -62,7 +53,7 @@ class MainController extends AbstractController
         }
         $resume = new Resume;
         $resume->setName($name);
-        $resume->setEmail($mail);
+        $resume->setEmail("wdafsdgf");
         $resume->setTelephone($phone);
         $resume->setArea($area);
         $resume->setExpectedProfit($expected_profit);
@@ -75,32 +66,21 @@ class MainController extends AbstractController
         return new Response("$answer");
     }
 
-    public function addResume(Resume $resume, ValidatorInterface $validator): string
+    public function addResume(Resume $resume, ValidatorInterface $validator)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $errors = $validator->validate($resume);
-        dump($errors);
-        if (count($errors) !== 0) {
-            throw new ValidatorException($errors);
-        }
-
         if (count($errors) === 0) {
             $entityManager->persist($resume);
             $entityManager->flush();
         }
-        return $errors;
+        else{
+            throw new MyException((string)$errors, 400);
+        }
     }
 
     public function getJsonList(Serializer $serializer){
-        $array_resume = $this->getResumeList();
-//        $encoders = [new XmlEncoder(), new JsonEncoder()];
-//        $normalizers = [new ObjectNormalizer()];
-//        $propertyAccessor = PropertyAccess::createPropertyAccessor();
-//        $propertyAccessor->setValue($normalizers,Null,[new ObjectNormalizer()]);
-//        $serializer = new Serializer();
-//        $propertyAccessor->setValue($serializer, "normalizers", $normalizers);
-//        $propertyAccessor->setValue($serializer, "encoders", $encoders);
-//        $jsonContent = $serializer->serialize($array_resume, 'json');
+        $array_resume = $this->getResumeList();//
         return $serializer->serialize($array_resume, 'json');
     }
 
