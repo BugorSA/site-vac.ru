@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Resume;
 use App\Exception\MyException;
 use DateTime;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,7 +26,7 @@ class MainController extends AbstractController
      */
     public function index(Request $request)
     {
-        if ($request->get("auth_key") === 'junior_test'){ //$request->get("auth_key") $_GET["auth_key"]
+        if ($request->query->get("auth_key") === 'junior_test'){ //$_GET["auth_key"]
             $serializer = $this->container->get('serializer');
             echo $this->getJsonList($serializer);
             return new Response();
