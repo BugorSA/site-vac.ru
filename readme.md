@@ -27,4 +27,4 @@
 * [![FastPic.Ru](https://i112.fastpic.ru/thumb/2020/0910/76/c410b50b75756850762d4251041b7f76.jpeg)](https://fastpic.ru/view/112/2020/0910/c410b50b75756850762d4251041b7f76.png.html)
 * [![FastPic.Ru](https://i112.fastpic.ru/thumb/2020/0910/2d/940616ac039fde519525099962b4c82d.jpeg)](https://fastpic.ru/view/112/2020/0910/940616ac039fde519525099962b4c82d.png.html)
 * [![FastPic.Ru](https://i112.fastpic.ru/thumb/2020/0910/5b/6098e38c1dda0238fd32914c14adbb5b.jpeg)](https://fastpic.ru/view/112/2020/0910/6098e38c1dda0238fd32914c14adbb5b.png.html)
-* [![FastPic.Ru](https://i112.fastpic.ru/thumb/2020/0910/51/0772a93997015d471f9764dda957d051.jpeg)](https://fastpic.ru/view/112/2020/0910/0772a93997015d471f9764dda957d051.png.html)
+* [![FastPic.Ru](https://i112.fastpic.ru/thumb/2020/0910/96/5c25084ab76738784d6d416533b77b96.jpeg)](https://fastpic.ru/view/112/2020/0910/5c25084ab76738784d6d416533b77b96.png.html)
